@@ -13,20 +13,15 @@ try:
 		result = api.host(ip)
 		
 		date = datetime.datetime.now()
-		if os.path.isfile("vulns " + ip + ".txt") == False:
-			fichier = open("vulns " + ip + ".txt", "w")
-		else:
-			fichier = open("vulns " + ip + ".txt", "a")
-			fichier.write("\n")
-
+		fichier = open("vulns " + ip + ".txt", "a")
 
 		if result.get("vulns", 0) != 0 :
 			print("vulnerability :")
 			print(result["vulns"])
-			fichier.write(str(date) + " : " + str(result["vulns"]))
+			fichier.write(str(date) + " : " + str(result["vulns"]) + "\n")
 		else :
 			print("No vulnerability")
-			fichier.write(str(date) + " : No vulnerability!")
+			fichier.write(str(date) + " : No vulnerability!\n")
 
 		fichier.close()
 
